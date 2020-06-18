@@ -1,0 +1,61 @@
+h1{
+	text-align: center;
+	font-size: 50px;
+    margin-top: 60px;
+
+}
+
+#upper{
+	padding: 300px;
+	margin-top: -250px;
+	margin-left: 150px;
+}
+
+#fetch_field{
+	width: 50%;
+	text-align: center;
+}
+
+#reg_sear_button_field{
+	width: 50%;
+	float: right;
+	text-align: center;
+}
+
+#register_but {
+	height: 30px;
+	width: 90px;
+}
+
+#Search_but{
+	height: 30px;
+	width: 90px;
+}
+
+#fetch_but{
+	height: 30px;
+	width: 90px;
+}
+
+#display_msg{
+	height: 100px;
+	margin-top: 70px;
+	margin-right: 200px;
+	text-align: center;
+}
+#reg_search_feild{
+	margin-top: 70px;
+	margin-right: 200px;
+	justify-content: center;
+	text-align: center;
+
+}
+#done{
+	height: 30px;
+	width: 90px;
+}
+
+#make_present{
+	height: 30px;
+	width: 100px;
+}

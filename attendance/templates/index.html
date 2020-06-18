@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>Attendance System</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+
+<body>
+	<div>
+		<h1>Daily Attendance System</h1>
+	</div>
+
+	<div id = "upper">
+		<div id = "reg_sear_button_field">
+			<table>
+				<tr><td><button id = "register_but" onclick="Register_click()">Register</button></td></tr>
+				<tr><td><button id = "Search_but" onclick="Search_click()">Search</button></td></tr>
+			</table>
+		</div>
+		<div id = "fetch_field">
+			<div id = "fetch_form">
+				<table>
+					<form onsubmit="return validate()" method="post" action="finder" />{% csrf_token %}
+					{% if name %}
+			    	<tr><td><label>Id : </label></td>
+			             <td><input type="number" name="id" id = "id" value = {{id}}></td></tr>
+			        <tr><td><label>Name : </label></td>
+			             <td><input type="text" name="name" id = "name" value = {{name}}></td></tr>
+			        <tr><td></td><td><button type="submit" id="fetch_but">Find</button></td></tr>
+			        {% else %}
+			        <tr><td><label>Id : </label></td>
+			             <td><input type="number" name="id" id = "id"></td></tr>
+			        <tr><td><label>Name : </label></td>
+			             <td><input type="text" name="name" id = "name"></td></tr>
+			        <tr><td></td><td><button type="submit" id="fetch_but">Find</button></td></tr>
+			        {% endif %}
+			    	</form>
+			      </table>
+			</div>
+		</div>
+		<div id="reg_search_feild">
+			<h3 id = "msg">Register By Name </h3>
+			<form method="post" action="ser_reg">{% csrf_token %}
+			<label id = "reg_name"><label>Name : </label><input type="text" name="r_name" class = "ser_reg_name" placeholder="Enter Register Name"><br><br></label>
+			<label id = "ser_name"><label>Name : </label><input type="text" name="s_name" class= "ser_reg_name" placeholder="Enter Search Name"><br><br></label>
+			<button type= "submit" id="done">Done</button>
+		</form>
+		</div>
+
+			<div id = "display_msg">
+				<h2 id = "disp_msg"></h2>
+	        </div>
+
+	        <div id = "display_msg_bk">
+				<h2 id = "disp_msg_bk">{{msg}}</h2>
+				{% if button %}
+					<a href='make_present/{{id}}'><button id = "make_present">Make Present </button></a>
+				{% endif %}
+	        </div>
+	        {% if list_msg %}
+	          {% for x in list_msg %}
+	        		<div id = "display_msg_bk">
+	        			{% if found %}
+							<h2 id = "disp_msg_bk">Id : {{x.0}} and Name : {{x.1}}</h2>
+	        			{% else %}
+	        			<h2 id = "disp_msg_bk">{{x}}</h2>
+	        		</div>
+	        		{% endif %}
+	          {% endfor %}
+	        {% endif %}
+	</div>
+
+
+</body>
+<script type="text/javascript" src='{% static "script.js" %}'></script>
+</html>
